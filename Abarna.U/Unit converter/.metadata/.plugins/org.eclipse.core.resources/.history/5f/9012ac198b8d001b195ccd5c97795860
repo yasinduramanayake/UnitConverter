@@ -1,0 +1,152 @@
+package tempconverter;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
+public class TempDisplayer extends JDialog {
+	
+	private JPanel contentPane;
+	private JButton btnConvert;
+	private JTextField input_box, output_box;
+	public String tempUnitType1;
+	public JComboBox dropdown;
+	public JLabel title;
+	private TempService tempCalc;
+	public double boxOneValue, boxTwoValue;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					TempDisplayer frame = new TempDisplayer();
+					frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
+	public TempDisplayer() {
+		tempCalc = new TempCalculate();
+		setResizable(false);
+		setTitle("Unit Converter");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 80, 750, 500);
+		setLocationRelativeTo(null);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		title = new JLabel("Temperature Converter");
+		title.setFont(new Font("Times New Roman", Font.PLAIN, 35));
+		title.setBounds(220, 20, 460, 40);
+		contentPane.add(title);
+		
+		dropdown = new JComboBox();
+		dropdown.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		dropdown.setBounds(250, 85, 250, 40);
+		contentPane.add(dropdown);
+		
+		dropdown.addItem(" Celsius To Fahrenheit");
+		dropdown.addItem(" Celsius To Kelvin");
+		dropdown.addItem(" Fahrenheit To Celsius");
+		dropdown.addItem(" Fahrenheit To Kelvin");
+		dropdown.addItem(" Kelvin To Celsius");
+		dropdown.addItem(" Kelvin To Fahrenheit");
+
+
+		input_box = new JTextField();
+		input_box.setHorizontalAlignment(SwingConstants.CENTER);
+		input_box.setFont(new Font("Tahoma", Font.BOLD, 20));
+		input_box.setBounds(50, 160, 280, 140);
+		input_box.setColumns(10);
+		contentPane.add(input_box);
+
+		output_box = new JTextField();
+		output_box.setEditable(false);
+		output_box.setBackground(Color.WHITE);
+		output_box.setFont(new Font("Tahoma", Font.BOLD, 20));
+		output_box.setHorizontalAlignment(SwingConstants.CENTER);
+		output_box.setColumns(10);
+		output_box.setBounds(400, 160,280, 140);
+		contentPane.add(output_box);
+
+		
+
+		btnConvert = new JButton("Convert");
+		btnConvert.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnConvert.setBounds(177, 245, 85, 30);
+		btnConvert.setFocusable(false);
+		contentPane.add(btnConvert);
+
+		
+
+		btnConvert.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tempUnitType1 = String.valueOf(dropdown.getSelectedItem());
+
+				String fieldValue1 = input_box.getText();
+
+				// textfield validation + get boxTwo Value
+				String PATTERN = "^[+-]?([0-9]*[.])?[0-9]+$";
+				Pattern pat = Pattern.compile(PATTERN);
+				Matcher match = pat.matcher(fieldValue1);
+
+				boolean result = !match.matches();
+
+				if (fieldValue1.isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Input Field is Empty", "Empty Field Alert", JOptionPane.OK_OPTION);
+
+				} else if (result) {
+					JOptionPane.showMessageDialog(null, "Input Valid Numbers Only ", "Alert", JOptionPane.OK_OPTION);
+
+				} else if (fieldValue1.length() > 10) {
+					JOptionPane.showMessageDialog(null, "Input Value is Too High", "Alert", JOptionPane.OK_OPTION);
+					output_box.setText(" ");
+
+				} else {
+					boxOneValue = Double.parseDouble(input_box.getText());
+
+					// celsius conversion
+					if (tempUnitType1.equalsIgnoreCase(" Celsius To Fahrenheit")) {
+							boxTwoValue = tempCalc.celsiusToFahrenheit(boxOneValue);
+						} 
+					else if (tempUnitType1.equalsIgnoreCase(" Celsius To Kelvin")) {
+							boxTwoValue = tempCalc.celsiusToKelvin(boxOneValue);
+
+						} 
+				}
+				// modify digit value
+				if (!fieldValue1.isEmpty() && fieldValue1.length() <= 10 ) {
+
+					boxTwoValue = Math.round(boxTwoValue * 100) / 100.0;
+					String fieldValue2 = String.valueOf(boxTwoValue);
+
+					if (fieldValue2.length() <= 10) {
+						DecimalFormat df = new DecimalFormat("#.##");
+						output_box.setText(df.format(boxTwoValue));
+
+					} else if (fieldValue2.length() > 10) {
+						DecimalFormat df = new DecimalFormat("#.##E0");
+						df.setMaximumFractionDigits(2);
+						output_box.setText(df.format(boxTwoValue));
+					}
+				}
+			
+			}
+		});
+	}
+}

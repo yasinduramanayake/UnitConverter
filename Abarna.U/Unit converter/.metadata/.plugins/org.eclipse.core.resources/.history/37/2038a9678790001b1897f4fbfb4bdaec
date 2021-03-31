@@ -1,0 +1,40 @@
+package energyconverter;
+
+import java.awt.EventQueue;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import tempconverter.TempDisplayer;
+import tempconverter.TempService;
+
+public class EnergyDisplayer extends JDialog {
+	
+	private JPanel jPannel;
+	private JButton btn_Convert,btn_Clear;
+	private JTextField input_box, output_box;
+	public String units;
+	public JComboBox dropdown;
+	public JLabel title,input,output;
+	private EnergyService tempCalc;
+	public double inputValue, outputValue;
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EnergyDisplayer frame = new EnergyDisplayer();
+					frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+}

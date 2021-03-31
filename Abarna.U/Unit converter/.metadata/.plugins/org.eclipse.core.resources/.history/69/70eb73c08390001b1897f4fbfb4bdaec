@@ -1,0 +1,5 @@
+package energyconverter;
+
+public interface EnergyService {
+
+}

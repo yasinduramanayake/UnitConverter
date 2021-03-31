@@ -1,0 +1,92 @@
+package unitconverterdisplayer;
+
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
+import energyconverter.EnergyDisplayer;
+import tempconverter.TempDisplayer;
+
+public class UnitConverterMenu extends JFrame {
+	
+	private JPanel jpanel;
+	private JButton tempBtn,energyBtn;
+	private JLabel title; 
+
+	private static boolean tempBtnOnclick = false;
+	private static boolean energyBtnOnclick = false;
+
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UnitConverterMenu frame = new UnitConverterMenu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	
+	public UnitConverterMenu() {
+		setResizable(false);
+		setTitle("Unit Converter");
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(80, 50, 550, 450);
+		setLocationRelativeTo(null);
+		jpanel = new JPanel();
+		jpanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(jpanel);
+		jpanel.setLayout(null);
+
+		title = new JLabel("Unit Converter");
+		title.setFont(new Font("Times New Roman", Font.PLAIN, 28));
+		title.setBounds(192, 22, 176, 30);
+		jpanel.add(title);
+		
+		tempBtn = new JButton("Temperature");
+		tempBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		tempBtn.setFocusable(false);
+		tempBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				tempBtnOnclick = ConverterDisplayerActivator.tempChecker();
+				if (tempBtnOnclick == true) {
+					TempDisplayer tempDisplayer = new TempDisplayer();
+					tempDisplayer.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Temperature Service is not Started",
+							"Error !", JOptionPane.OK_OPTION);
+				}
+			}
+		});
+		tempBtn.setBounds(50, 90, 200, 60);
+		jpanel.add(tempBtn);
+		
+		energyBtn = new JButton("Energy");
+		energyBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		energyBtn.setFocusable(false);
+		energyBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				energyBtnOnclick = ConverterDisplayerActivator.energyChecker();
+				if (energyBtnOnclick == true) {
+					EnergyDisplayer energyDisplayer = new EnergyDisplayer();
+					energyDisplayer.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Energy Service is not Started",
+							"Error !", JOptionPane.OK_OPTION);
+				}
+			}
+		});
+		energyBtn.setBounds(250, 90, 200, 60);
+		jpanel.add(energyBtn);
+
+
+	}
+}
