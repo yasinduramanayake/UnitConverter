@@ -8,18 +8,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
+import lengthconverter.LengthDisplayer;
+import storageconverter.StorageDisplayer;
 import energyconverter.EnergyDisplayer;
 import tempconverter.TempDisplayer;
 
 public class UnitConverterMenu extends JFrame {
 	
 	private JPanel jpanel;
-	private JButton tempBtn,energyBtn,btn1,btn2,btn3,btn4,btn5,btn6;
+	private JButton tempBtn,energyBtn,lengthBtn,storageBtn,btn3,btn4,btn5,btn6;
 	private JLabel title; 
 
 	private static boolean tempBtnOnclick = false;
 	private static boolean energyBtnOnclick = false;
+	private static boolean lengthBtnOnclick = false;
+	private static boolean storageBtnOnclick = false;
 
 
 	public static void main(String[] args) {
@@ -90,27 +93,41 @@ public class UnitConverterMenu extends JFrame {
 		jpanel.add(energyBtn);
 
 
-		btn1 = new JButton("btn1");
-		btn1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btn1.setFocusable(false);
-		btn1.addActionListener(new ActionListener() {
+		lengthBtn = new JButton("Length");
+		lengthBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lengthBtn.setFocusable(false);
+		lengthBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				lengthBtnOnclick = ConverterDisplayerActivator.lengthChecker();
+				if (lengthBtnOnclick == true) {
+					LengthDisplayer lengthDisplayer = new LengthDisplayer();
+					lengthDisplayer.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Length Service is not Started",
+							"Error !", JOptionPane.OK_OPTION);
+				}
 			}
 		});
-		btn1.setBounds(50, 170, 200, 60);
-		jpanel.add(btn1);
+		lengthBtn.setBounds(50, 170, 200, 60);
+		jpanel.add(lengthBtn);
 		
-		btn2 = new JButton("btn2");
-		btn2.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btn2.setFocusable(false);
-		btn2.addActionListener(new ActionListener() {
+		storageBtn = new JButton("storageBtn");
+		storageBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		storageBtn.setFocusable(false);
+		storageBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				storageBtnOnclick = ConverterDisplayerActivator.StorageChecker();
+				if (storageBtnOnclick == true) {
+					StorageDisplayer StorageDisplayer = new StorageDisplayer();
+					StorageDisplayer.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Storage Service is not Started",
+							"Error !", JOptionPane.OK_OPTION);
+				}
 			}
 		});
-		btn2.setBounds(280, 170, 200, 60);
-		jpanel.add(btn2);
+		storageBtn.setBounds(280, 170, 200, 60);
+		jpanel.add(storageBtn);
 		
 		btn3 = new JButton("btn3");
 		btn3.setFont(new Font("Tahoma", Font.PLAIN, 18));
