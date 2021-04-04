@@ -7,8 +7,10 @@ Bundle-Activator: unitconverterdisplayer.ConverterDisplayerActivator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Automatic-Module-Name: UnitConverterDisplayer
 Import-Package: energyconverter,
+ lengthconverter,
  org.osgi.framework;version="1.3.0",
  org.osgi.util.tracker;version="1.5.2",
+ storageconverter,
  tempconverter
 Bundle-ActivationPolicy: lazy
 Export-Package: unitconverterdisplayer
