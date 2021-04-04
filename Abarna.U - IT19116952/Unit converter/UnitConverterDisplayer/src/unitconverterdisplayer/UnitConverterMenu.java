@@ -15,11 +15,12 @@ import tempconverter.TempDisplayer;
 public class UnitConverterMenu extends JFrame {
 	
 	private JPanel jpanel;
-	private JButton tempBtn,energyBtn,btn1,btn2,btn3,btn4,btn5,btn6;
+	private JButton tempBtn,energyBtn,MassBtn,btn2,btn3,btn4,btn5,btn6;
 	private JLabel title; 
 
 	private static boolean tempBtnOnclick = false;
 	private static boolean energyBtnOnclick = false;
+	private static boolean MassBtnOnclick = false;
 
 
 	public static void main(String[] args) {
@@ -90,16 +91,16 @@ public class UnitConverterMenu extends JFrame {
 		jpanel.add(energyBtn);
 
 
-		btn1 = new JButton("btn1");
-		btn1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btn1.setFocusable(false);
-		btn1.addActionListener(new ActionListener() {
+		MassBtn = new JButton("Mass");
+		MassBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		MassBtn.setFocusable(false);
+		MassBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btn1.setBounds(50, 170, 200, 60);
-		jpanel.add(btn1);
+		MassBtn.setBounds(50, 170, 200, 60);
+		jpanel.add(MassBtn);
 		
 		btn2 = new JButton("btn2");
 		btn2.setFont(new Font("Tahoma", Font.PLAIN, 18));
