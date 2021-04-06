@@ -1,7 +1,6 @@
-package energyconverter;
+package timeconverter;
 
 import java.awt.Color;
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -21,9 +20,12 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import energyconverter.*;
+import timeconverter.TimeCalculate;
+import timeconverter.TimeDisplayer;
+import timeconverter.TimeService;
 
-public class EnergyDisplayer extends JDialog {
+
+public class TimeDisplayer extends JDialog {
 	
 	private JPanel jPannel;
 	private JButton btn_Convert,btn_Clear;
@@ -31,14 +33,14 @@ public class EnergyDisplayer extends JDialog {
 	public String units;
 	public JComboBox dropdown;
 	public JLabel title,input,output;
-	private EnergyService energyCalc;
+	private TimeService timeCalc;
 	public double inputValue, outputValue;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EnergyDisplayer frame = new EnergyDisplayer();
+					TimeDisplayer frame = new TimeDisplayer();
 					frame.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -47,51 +49,52 @@ public class EnergyDisplayer extends JDialog {
 			}
 		});
 	}
+
 	
-	public EnergyDisplayer() {
-		energyCalc = new EnergyCalculate();
+	public TimeDisplayer() {
+		timeCalc = new TimeCalculate();
 		setResizable(false);
-		setTitle("IT19116952 - Abarna.U");
+		setTitle("IT19159454 - Fernando P.P.A");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 80, 750, 500);
+		setBounds(80, 50, 600, 720);
 		setLocationRelativeTo(null);
 		jPannel = new JPanel();
 		jPannel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(jPannel);
 		jPannel.setLayout(null);
 		
-		title = new JLabel("Energy Converter");
+		title = new JLabel("Time Converter");
 		title.setFont(new Font("Times New Roman", Font.PLAIN, 35));
-		title.setBounds(220, 20, 460, 40);
+		title.setBounds(180, 20, 460, 40);
 		jPannel.add(title);
 		
 		dropdown = new JComboBox();
 		dropdown.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		dropdown.setBounds(280, 85, 200, 40);
+		dropdown.setBounds(190, 85, 200, 40);
 		jPannel.add(dropdown);
 		
-		dropdown.addItem(" Joule To Calorie");
-		dropdown.addItem(" Joule To KiloJoule");
-		dropdown.addItem(" Calorie To Joule");
-		dropdown.addItem(" Calorie To KiloJoule");
-		dropdown.addItem(" KiloJoule To Calorie");
-		dropdown.addItem(" KiloJoule To Joule");
+		dropdown.addItem(" Hour To Minute");
+		dropdown.addItem(" Hour To Second");
+		dropdown.addItem(" Minute To Second");
+		dropdown.addItem(" Minute To Hour");
+		dropdown.addItem(" Second To Minute");
+		dropdown.addItem(" Second To Hour");
 
 
 		input = new JLabel("Input");
 		input.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		input.setBounds(160, 120, 60, 20);
+		input.setBounds(260, 150, 60, 20);
 		jPannel.add(input);
 		
 		output = new JLabel("Output");
 		output.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		output.setBounds(510, 120, 60, 20);
+		output.setBounds(260, 420, 60, 20);
 		jPannel.add(output);
 		
 		input_box = new JTextField();
 		input_box.setHorizontalAlignment(SwingConstants.CENTER);
 		input_box.setFont(new Font("Tahoma", Font.BOLD, 20));
-		input_box.setBounds(50, 160, 280, 140);
+		input_box.setBounds(150, 180, 280, 140);
 		input_box.setColumns(10);
 		jPannel.add(input_box);
 
@@ -101,20 +104,20 @@ public class EnergyDisplayer extends JDialog {
 		output_box.setFont(new Font("Tahoma", Font.BOLD, 20));
 		output_box.setHorizontalAlignment(SwingConstants.CENTER);
 		output_box.setColumns(10);
-		output_box.setBounds(400, 160,280, 140);
+		output_box.setBounds(150, 450, 280, 140);
 		jPannel.add(output_box);
 
 		
 
 		btn_Convert = new JButton("Convert");
 		btn_Convert.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btn_Convert.setBounds(140, 330, 100, 40);
+		btn_Convert.setBounds(240, 350, 100, 40);
 		btn_Convert.setFocusable(false);
 		jPannel.add(btn_Convert);
 
 		btn_Clear = new JButton("Clear");
 		btn_Clear.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btn_Clear.setBounds(490, 330, 100, 40);
+		btn_Clear.setBounds(240, 620, 100, 40);
 		btn_Clear.setFocusable(false);
 		jPannel.add(btn_Clear);
 		
@@ -156,23 +159,23 @@ public class EnergyDisplayer extends JDialog {
 				} else {
 					inputValue = Double.parseDouble(input_box.getText());
 
-					if (units.equalsIgnoreCase(" Joule To Calorie")) {
-							outputValue = energyCalc.jouleToCalorie(inputValue);
+					if (units.equalsIgnoreCase(" Hour To Minute")) {
+							outputValue = timeCalc.hourToMinute(inputValue);
 						} 
-					else if (units.equalsIgnoreCase(" Joule To KiloJoule")) {
-							outputValue = energyCalc.jouleToKilojoule(inputValue);
+					else if (units.equalsIgnoreCase(" Hour To Second")) {
+							outputValue = timeCalc.hourToSecond(inputValue);
 						} 
-					else if (units.equalsIgnoreCase(" Calorie To Joule")) {
-						outputValue = energyCalc.calorieTojoule(inputValue);
+					else if (units.equalsIgnoreCase(" Minute To Second")) {
+						outputValue = timeCalc.minuteToSecond(inputValue);
 					}
-					else if (units.equalsIgnoreCase(" Calorie To KiloJoule")) {
-						outputValue = energyCalc.calorieToKilojoule(inputValue);
+					else if (units.equalsIgnoreCase(" Minute To Hour")) {
+						outputValue = timeCalc.minuteToHour(inputValue);
 					}
-					else if (units.equalsIgnoreCase(" KiloJoule To Calorie")) {
-						outputValue = energyCalc.kilojouleToCalorie(inputValue);
+					else if (units.equalsIgnoreCase(" Second To Minute")) {
+						outputValue = timeCalc.secondToMinute(inputValue);
 					}
-					else if (units.equalsIgnoreCase(" KiloJoule To Joule")) {
-						outputValue = energyCalc.kilojouleToJoule(inputValue);
+					else if (units.equalsIgnoreCase(" Second To Hour")) {
+						outputValue = timeCalc.secondToHour(inputValue);
 					}
 				}
 
@@ -195,5 +198,6 @@ public class EnergyDisplayer extends JDialog {
 			}
 		});
 	}
-
 }
+
+

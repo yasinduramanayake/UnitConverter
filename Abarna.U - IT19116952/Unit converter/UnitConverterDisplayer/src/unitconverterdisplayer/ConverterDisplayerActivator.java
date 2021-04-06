@@ -2,22 +2,25 @@ package unitconverterdisplayer;
 
 import energyconverter.EnergyService;
 import lengthconverter.LengthService;
-
+import massconverter.MassService;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.util.tracker.ServiceTracker;
 import storageconverter.StorageService;
 import tempconverter.TempService;
+import timeconverter.TimeService;
 
 public class ConverterDisplayerActivator implements BundleActivator {
 
 	public ServiceRegistration serviceRegistration;
-	public static ServiceTracker tempTracker,energyTracker,lengthTracker,storageTracker;
+	public static ServiceTracker tempTracker,energyTracker,lengthTracker,storageTracker,massTracker,timeTracker;
 	public static TempService tempService;
 	public static EnergyService energyService;
 	public static LengthService lengthService;
 	public static StorageService storageService;
+	public static MassService massService;
+	public static TimeService timeService;
 	
 
 	public void start(BundleContext bundleContext) throws Exception {
@@ -29,7 +32,8 @@ public class ConverterDisplayerActivator implements BundleActivator {
 		energyTracker = new ServiceTracker(bundleContext,EnergyService.class.getName(),null);
 		lengthTracker = new ServiceTracker(bundleContext, LengthService.class.getName(), null);
 		storageTracker = new ServiceTracker(bundleContext, StorageService.class.getName(), null);
-		
+		massTracker = new ServiceTracker(bundleContext, MassService.class.getName(), null);
+		timeTracker = new ServiceTracker(bundleContext,TimeService.class.getName(),null);
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {
@@ -71,6 +75,26 @@ public class ConverterDisplayerActivator implements BundleActivator {
 		storageService = (StorageService) storageTracker.getService();
 		
 		if (storageService != null)
+			return true;
+		else
+			return false;
+	}
+	
+	public static boolean MassChecker() {
+		massTracker .open();
+		massService = (MassService) massTracker.getService();
+		
+		if (massService != null)
+			return true;
+		else
+			return false;
+	}
+	
+	public static boolean timeChecker() {
+		timeTracker.open();
+		timeService = (TimeService) timeTracker.getService();
+		
+		if (timeService != null)
 			return true;
 		else
 			return false;

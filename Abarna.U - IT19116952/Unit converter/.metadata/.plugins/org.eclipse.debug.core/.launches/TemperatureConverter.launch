@@ -22,11 +22,36 @@
     <stringAttribute key="pde.version" value="3.3"/>
     <setAttribute key="selected_target_bundles">
         <setEntry value="com.ibm.icu@default:default"/>
+        <setEntry value="com.sun.jna*4.5.1.v20190425-1842@default:default"/>
+        <setEntry value="com.sun.jna*5.6.0.v20200716-0148@default:default"/>
+        <setEntry value="com.sun.jna.platform*4.5.1.v20190425-1842@default:default"/>
+        <setEntry value="com.sun.jna.platform*5.6.0.v20200722-0209@default:default"/>
         <setEntry value="java_cup.runtime@default:default"/>
         <setEntry value="javax.annotation@default:default"/>
         <setEntry value="javax.inject@default:default"/>
         <setEntry value="javax.servlet@default:default"/>
         <setEntry value="javax.xml@default:default"/>
+        <setEntry value="org.apache.batik.constants@default:default"/>
+        <setEntry value="org.apache.batik.css@default:default"/>
+        <setEntry value="org.apache.batik.i18n@default:default"/>
+        <setEntry value="org.apache.batik.util@default:default"/>
+        <setEntry value="org.apache.commons.io@default:default"/>
+        <setEntry value="org.apache.commons.jxpath@default:default"/>
+        <setEntry value="org.apache.commons.logging@default:default"/>
+        <setEntry value="org.apache.felix.scr@1:true"/>
+        <setEntry value="org.apache.log4j@default:default"/>
+        <setEntry value="org.apache.xmlgraphics@default:default"/>
+        <setEntry value="org.eclipse.ant.core@default:default"/>
+        <setEntry value="org.eclipse.compare.core@default:default"/>
+        <setEntry value="org.eclipse.core.commands@default:default"/>
+        <setEntry value="org.eclipse.core.contenttype@default:default"/>
+        <setEntry value="org.eclipse.core.databinding.observable@default:default"/>
+        <setEntry value="org.eclipse.core.databinding.property@default:default"/>
+        <setEntry value="org.eclipse.core.databinding@default:default"/>
+        <setEntry value="org.eclipse.core.expressions@default:default"/>
+        <setEntry value="org.eclipse.core.filesystem.win32.x86_64@default:false"/>
+        <setEntry value="org.eclipse.core.filesystem@default:default"/>
+        <setEntry value="org.eclipse.core.jobs@default:default"/>
         <setEntry value="org.eclipse.core.resources.win32.x86_64@default:false"/>
         <setEntry value="org.eclipse.core.resources@default:default"/>
         <setEntry value="org.eclipse.core.runtime@default:true"/>
@@ -59,7 +84,16 @@
         <setEntry value="org.eclipse.emf.ecore.change@default:default"/>
         <setEntry value="org.eclipse.emf.ecore.xmi@default:default"/>
         <setEntry value="org.eclipse.emf.ecore@default:default"/>
+        <setEntry value="org.eclipse.equinox.app@default:default"/>
+        <setEntry value="org.eclipse.equinox.bidi@default:default"/>
+        <setEntry value="org.eclipse.equinox.common@2:true"/>
+        <setEntry value="org.eclipse.equinox.event@default:default"/>
+        <setEntry value="org.eclipse.equinox.preferences@default:default"/>
+        <setEntry value="org.eclipse.equinox.registry@default:default"/>
+        <setEntry value="org.eclipse.help@default:default"/>
+        <setEntry value="org.eclipse.jdt.annotation*2.2.600.v20200408-1511@default:default"/>
         <setEntry value="org.eclipse.jface.databinding@default:default"/>
+        <setEntry value="org.eclipse.jface.notifications@default:default"/>
         <setEntry value="org.eclipse.jface.text@default:default"/>
         <setEntry value="org.eclipse.jface@default:default"/>
         <setEntry value="org.eclipse.osgi.compatibility.state@default:false"/>
@@ -79,7 +113,14 @@
         <setEntry value="org.w3c.dom.smil@default:default"/>
         <setEntry value="org.w3c.dom.svg@default:default"/>
     </setAttribute>
-    <setAttribute key="selected_workspace_bundles"/>
+    <setAttribute key="selected_workspace_bundles">
+        <setEntry value="EnergyConverter@default:default"/>
+        <setEntry value="LengthConverter@default:default"/>
+        <setEntry value="MassConverter@default:default"/>
+        <setEntry value="StorageConverter@default:default"/>
+        <setEntry value="TempConverter@default:default"/>
+        <setEntry value="UnitConverterDisplayer@default:default"/>
+    </setAttribute>
     <booleanAttribute key="show_selected_only" value="false"/>
     <booleanAttribute key="tracing" value="false"/>
     <booleanAttribute key="useCustomFeatures" value="false"/>
