@@ -116,8 +116,6 @@ public class UnitConverterMenu extends JFrame {
 			}
 		});
 
-		MassBtn.setBounds(50, 170, 200, 60);
-		jpanel.add(MassBtn);
 		lengthBtn.setBounds(50, 170, 200, 60);
 		jpanel.add(lengthBtn);
 
@@ -151,7 +149,7 @@ public class UnitConverterMenu extends JFrame {
 		currencyBtn.setBounds(50, 250, 200, 60);
 		jpanel.add(currencyBtn);
 		
-		speedBtn = new JButton("Mass");
+		speedBtn = new JButton("Speed");
 		speedBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		speedBtn.setFocusable(false);
 		speedBtn.addActionListener(new ActionListener() {
@@ -204,7 +202,7 @@ public class UnitConverterMenu extends JFrame {
 			}
 		});
 		Timebtn.setBounds(280, 330, 200, 60);
-		Timebtn.add(Timebtn);
+		jpanel.add(Timebtn);
 	}
 	
 }
