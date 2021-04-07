@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import currencyconverter.CurrencyDisplay;
 import lengthconverter.LengthDisplayer;
 import storageconverter.StorageDisplayer;
 import energyconverter.EnergyDisplayer;
@@ -29,6 +31,7 @@ public class UnitConverterMenu extends JFrame {
 	private static boolean speedBtnOnclick = false;
 	private static boolean massBtnOnclick = false;
 	private static boolean timeBtnOnClick = false;
+	private static boolean currencyBtnOnClick = false;
 
 
 	public static void main(String[] args) {
@@ -120,7 +123,7 @@ public class UnitConverterMenu extends JFrame {
 		jpanel.add(lengthBtn);
 
 		
-		storageBtn = new JButton("storageBtn");
+		storageBtn = new JButton("Storage");
 		storageBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		storageBtn.setFocusable(false);
 		storageBtn.addActionListener(new ActionListener() {
@@ -143,7 +146,14 @@ public class UnitConverterMenu extends JFrame {
 		currencyBtn.setFocusable(false);
 		currencyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				currencyBtnOnClick = ConverterDisplayerActivator.CurencyChecker();
+				if (currencyBtnOnClick == true) {
+					CurrencyDisplay currencyDisplay = new CurrencyDisplay();
+					currencyDisplay.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Currency Service is not Started",
+							"Error !", JOptionPane.OK_OPTION);
+				}
 			}
 		});
 		currencyBtn.setBounds(50, 250, 200, 60);
