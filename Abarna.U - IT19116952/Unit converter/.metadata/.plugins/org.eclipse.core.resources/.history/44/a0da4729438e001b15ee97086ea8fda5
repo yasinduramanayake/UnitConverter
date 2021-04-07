@@ -1,8 +1,0 @@
-package System.out;
-
-public interface ConverterDisplayer {
-	
-	public void startService();
-	public void stopService();
-
-}

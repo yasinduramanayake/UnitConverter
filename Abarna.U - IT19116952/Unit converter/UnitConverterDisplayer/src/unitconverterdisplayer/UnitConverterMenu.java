@@ -1,6 +1,7 @@
 package unitconverterdisplayer;
 
 import java.awt.Color;
+
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,17 +13,20 @@ import lengthconverter.LengthDisplayer;
 import storageconverter.StorageDisplayer;
 import energyconverter.EnergyDisplayer;
 import tempconverter.TempDisplayer;
+import speedconverter.SpeedDisplay;
+
 
 public class UnitConverterMenu extends JFrame {
 	
 	private JPanel jpanel;
-	private JButton tempBtn,energyBtn,lengthBtn,storageBtn,btn3,btn4,btn5,btn6;
+	private JButton tempBtn,energyBtn,lengthBtn,storageBtn,currencyBtn,speedBtn,btn5,btn6;
 	private JLabel title; 
 
 	private static boolean tempBtnOnclick = false;
 	private static boolean energyBtnOnclick = false;
 	private static boolean lengthBtnOnclick = false;
 	private static boolean storageBtnOnclick = false;
+	private static boolean speedBtnOnclick = false;
 
 
 	public static void main(String[] args) {
@@ -129,27 +133,27 @@ public class UnitConverterMenu extends JFrame {
 		storageBtn.setBounds(280, 170, 200, 60);
 		jpanel.add(storageBtn);
 		
-		btn3 = new JButton("btn3");
-		btn3.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btn3.setFocusable(false);
-		btn3.addActionListener(new ActionListener() {
+		currencyBtn = new JButton("Currency");
+		currencyBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		currencyBtn.setFocusable(false);
+		currencyBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btn3.setBounds(50, 250, 200, 60);
-		jpanel.add(btn3);
+		currencyBtn.setBounds(50, 250, 200, 60);
+		jpanel.add(currencyBtn);
 		
-		btn4 = new JButton("btn2");
-		btn4.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btn4.setFocusable(false);
-		btn4.addActionListener(new ActionListener() {
+		speedBtn = new JButton("Speed");
+		speedBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		speedBtn.setFocusable(false);
+		speedBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 			}
 		});
-		btn4.setBounds(280, 250, 200, 60);
-		jpanel.add(btn4);
+		speedBtn.setBounds(280, 250, 200, 60);
+		jpanel.add(speedBtn);
 		
 		btn5 = new JButton("btn3");
 		btn5.setFont(new Font("Tahoma", Font.PLAIN, 18));
