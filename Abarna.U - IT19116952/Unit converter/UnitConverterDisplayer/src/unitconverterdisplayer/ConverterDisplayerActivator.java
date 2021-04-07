@@ -12,32 +12,26 @@ import org.osgi.util.tracker.ServiceTracker;
 
 import storageconverter.StorageService;
 import tempconverter.TempService;
-<<<<<<< HEAD
 import currencyconverter.CurencyService;
 import speedconverter.SpeedService;
-=======
 import timeconverter.TimeService;
->>>>>>> pubudi
+
 
 public class ConverterDisplayerActivator implements BundleActivator {
 
 	public ServiceRegistration serviceRegistration;
-<<<<<<< HEAD
+
 	public static ServiceTracker tempTracker,energyTracker,lengthTracker,storageTracker, currencyTracker, speedTracker;
-=======
-	public static ServiceTracker tempTracker,energyTracker,lengthTracker,storageTracker,massTracker,timeTracker;
->>>>>>> pubudi
+	public static ServiceTracker massTracker,timeTracker;
 	public static TempService tempService;
 	public static EnergyService energyService;
 	public static LengthService lengthService;
 	public static StorageService storageService;
-<<<<<<< HEAD
 	public static CurencyService curencyService;
 	public static SpeedService speedService;
-=======
 	public static MassService massService;
 	public static TimeService timeService;
->>>>>>> pubudi
+
 	
 
 	public void start(BundleContext bundleContext) throws Exception {
@@ -49,14 +43,10 @@ public class ConverterDisplayerActivator implements BundleActivator {
 		energyTracker = new ServiceTracker(bundleContext,EnergyService.class.getName(),null);
 		lengthTracker = new ServiceTracker(bundleContext, LengthService.class.getName(), null);
 		storageTracker = new ServiceTracker(bundleContext, StorageService.class.getName(), null);
-<<<<<<< HEAD
 		currencyTracker = new ServiceTracker(bundleContext, CurencyService.class.getName(), null);
 		speedTracker = new ServiceTracker(bundleContext, SpeedService.class.getName(), null);
-		
-=======
 		massTracker = new ServiceTracker(bundleContext, MassService.class.getName(), null);
 		timeTracker = new ServiceTracker(bundleContext,TimeService.class.getName(),null);
->>>>>>> pubudi
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {
@@ -103,45 +93,41 @@ public class ConverterDisplayerActivator implements BundleActivator {
 			return false;
 	}
 	
-<<<<<<< HEAD
-	
 	public static boolean CurencyChecker() {
 		currencyTracker .open();
 		curencyService = (CurencyService) currencyTracker.getService();
 		
 		if (curencyService != null)
-=======
+			return true;
+		else
+			return false;
+	}
 	public static boolean MassChecker() {
 		massTracker .open();
 		massService = (MassService) massTracker.getService();
 		
 		if (massService != null)
->>>>>>> pubudi
 			return true;
 		else
 			return false;
 	}
-	
-<<<<<<< HEAD
 	public static boolean SpeedChecker() {
 		speedTracker .open();
 		speedService = (SpeedService) speedTracker.getService();
 		
 		if (speedService != null)
-=======
+			return true;
+		else
+			return false;
+	}
 	public static boolean timeChecker() {
 		timeTracker.open();
 		timeService = (TimeService) timeTracker.getService();
 		
 		if (timeService != null)
->>>>>>> pubudi
 			return true;
 		else
 			return false;
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> pubudi
 }
 
