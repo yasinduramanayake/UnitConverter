@@ -93,6 +93,7 @@ public class StorageDisplayer extends JDialog {
 		dropdown2.addItem("Bits");
 		dropdown2.addItem("Bytes");
 		dropdown2.addItem("KiloBytes");
+
 		
 
 		output_box = new JTextField();
@@ -103,8 +104,6 @@ public class StorageDisplayer extends JDialog {
 		output_box.setBounds(400, 160,280, 140);		
 		output_box.setColumns(10);	
 		jPannel.add(output_box);
-
-		
 
 		btn_Convert = new JButton("Convert");
 		btn_Convert.setFont(new Font("Tahoma", Font.PLAIN, 14));

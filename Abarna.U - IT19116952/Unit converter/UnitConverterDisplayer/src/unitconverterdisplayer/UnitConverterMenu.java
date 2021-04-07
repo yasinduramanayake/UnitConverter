@@ -2,6 +2,10 @@ package unitconverterdisplayer;
 
 import java.awt.Color;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> pubudi
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -13,20 +17,35 @@ import lengthconverter.LengthDisplayer;
 import storageconverter.StorageDisplayer;
 import energyconverter.EnergyDisplayer;
 import tempconverter.TempDisplayer;
+<<<<<<< HEAD
 import speedconverter.SpeedDisplay;
 
+=======
+import massconverter.MassDisplayer;
+import timeconverter.TimeDisplayer;
+>>>>>>> pubudi
 
 public class UnitConverterMenu extends JFrame {
 	
 	private JPanel jpanel;
+<<<<<<< HEAD
 	private JButton tempBtn,energyBtn,lengthBtn,storageBtn,currencyBtn,speedBtn,btn5,btn6;
+=======
+	private JButton tempBtn,energyBtn,lengthBtn,storageBtn,btn3,btn4,MassBtn,Timebtn;
+	
+>>>>>>> pubudi
 	private JLabel title; 
-
 	private static boolean tempBtnOnclick = false;
 	private static boolean energyBtnOnclick = false;
 	private static boolean lengthBtnOnclick = false;
 	private static boolean storageBtnOnclick = false;
+<<<<<<< HEAD
 	private static boolean speedBtnOnclick = false;
+=======
+	private static boolean massBtnOnclick = false;
+	private static boolean timeBtnOnClick = false;
+
+>>>>>>> pubudi
 
 
 	public static void main(String[] args) {
@@ -101,6 +120,7 @@ public class UnitConverterMenu extends JFrame {
 		lengthBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lengthBtn.setFocusable(false);
 		lengthBtn.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				lengthBtnOnclick = ConverterDisplayerActivator.lengthChecker();
 				if (lengthBtnOnclick == true) {
@@ -112,8 +132,12 @@ public class UnitConverterMenu extends JFrame {
 				}
 			}
 		});
+
+		MassBtn.setBounds(50, 170, 200, 60);
+		jpanel.add(MassBtn);
 		lengthBtn.setBounds(50, 170, 200, 60);
 		jpanel.add(lengthBtn);
+
 		
 		storageBtn = new JButton("storageBtn");
 		storageBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -144,10 +168,17 @@ public class UnitConverterMenu extends JFrame {
 		currencyBtn.setBounds(50, 250, 200, 60);
 		jpanel.add(currencyBtn);
 		
+<<<<<<< HEAD
 		speedBtn = new JButton("Speed");
 		speedBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		speedBtn.setFocusable(false);
 		speedBtn.addActionListener(new ActionListener() {
+=======
+		btn4 = new JButton("btn4");
+		btn4.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btn4.setFocusable(false);
+		btn4.addActionListener(new ActionListener() {
+>>>>>>> pubudi
 			public void actionPerformed(ActionEvent e) {
 				
 			}
@@ -155,27 +186,42 @@ public class UnitConverterMenu extends JFrame {
 		speedBtn.setBounds(280, 250, 200, 60);
 		jpanel.add(speedBtn);
 		
-		btn5 = new JButton("btn3");
-		btn5.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btn5.setFocusable(false);
-		btn5.addActionListener(new ActionListener() {
+		MassBtn = new JButton("Mass");
+		MassBtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		MassBtn.setFocusable(false);
+		MassBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				massBtnOnclick = ConverterDisplayerActivator.MassChecker();
+				if (massBtnOnclick == true) {
+					MassDisplayer MassDisplayer = new MassDisplayer();
+					MassDisplayer.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Mass Service is not Started",
+							"Error !", JOptionPane.OK_OPTION);
+				}
 			}
 		});
-		btn5.setBounds(50, 330, 200, 60);
-		jpanel.add(btn5);
+		MassBtn.setBounds(50, 330, 200, 60);
+		jpanel.add(MassBtn);
 		
-		btn6 = new JButton("btn2");
-		btn6.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		btn6.setFocusable(false);
-		btn6.addActionListener(new ActionListener() {
+		Timebtn = new JButton("Time");
+		Timebtn.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		Timebtn.setFocusable(false);
+		Timebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				timeBtnOnClick = ConverterDisplayerActivator.timeChecker();
+				if (timeBtnOnClick == true) {
+					TimeDisplayer TimeDisplayer = new TimeDisplayer();
+					TimeDisplayer.setVisible(true);
+				} else {
+					JOptionPane.showMessageDialog(null, "Time Service is not Started",
+							"Error !", JOptionPane.OK_OPTION);
+				}
 				
 			}
 		});
-		btn6.setBounds(280, 330, 200, 60);
-		jpanel.add(btn6);
+		Timebtn.setBounds(280, 330, 200, 60);
+		Timebtn.add(Timebtn);
 	}
 	
 }
